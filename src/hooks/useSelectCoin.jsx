@@ -5,11 +5,21 @@ const Label = styled.label`
     color: #fff;
 `
 
-const useSelectCoin = (label) => {
+const useSelectCoin = (label, options) => {
     
     const SelectCoins = () => (
         <>
             <Label>{label}</Label>
+            <select>
+                <option value="">Select</option>
+
+                {options.map(option => (
+                    <option
+                        key={option.id}
+                        value={option.id}
+                    >{option.name}</option>
+                ))}
+            </select>
         </>
     )
 

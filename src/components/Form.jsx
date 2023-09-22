@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import useSelectCoin from '../hooks/useSelectCoin.jsx'
+import { coins } from '../data/coins.js'
 
 const InputSubmit = styled.input `
     background-color: #9497FF;
@@ -22,16 +23,13 @@ const InputSubmit = styled.input `
 
 const Form = () => {
 
-    const [SelectCoins] = useSelectCoin('Choose your currency')
-    const [SelectCryptocurrencies] = useSelectCoin('Choose your cryptocurrencies')
+    const [SelectCoins] = useSelectCoin('Choose your currency', coins);
 
 
   return (
     <form>
 
       <SelectCoins /> 
-      <SelectCryptocurrencies /> 
-
 
       <InputSubmit 
         type="submit" 
