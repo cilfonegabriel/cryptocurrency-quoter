@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 import ImagenCripto from './img/imagen-criptos.png'
 import Form from './components/Form'
 import Result from './components/Result'
+import Spinner from './components/Spinner'
+
 
 const Container = styled.div `
   max-width: 900px;
@@ -44,11 +46,16 @@ function App() {
 
   const [coins, setCoins] = useState({})
   const [result, setResult] = useState({})
+  const [load, setLoad] = useState(false)
+
 
   useEffect(() => {
     if(Object.keys(coins).length > 0) {
 
       const quoteCripto = async () => {
+
+        setLoad(true)
+        setResult({})
 
         const  {coin, criptoCurrency } = coins
 
@@ -58,6 +65,7 @@ function App() {
         const result = await resp.json()
 
        setResult(result.DISPLAY[criptoCurrency][coin])
+       setLoad(false)
       }
 
       quoteCripto()
@@ -77,7 +85,7 @@ function App() {
         <Form
           setCoins = {setCoins}
         />
-
+        {load && <Spinner />}
         { result.PRICE && <Result result={result}/> } 
 
       </div>
