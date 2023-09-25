@@ -27,6 +27,9 @@ const Form = () => {
     const [criptos, setCriptos] = useState([])
 
     const [coin, SelectCoins] = useSelectCoin('Choose your currency', coins);
+    const [criptoCurrency, SelectCriptoCurrency] = useSelectCoin('Choose your cripto currency', criptos);
+
+    
 
     useEffect(() => {
         const consultAPI = async () => {
@@ -53,6 +56,7 @@ const Form = () => {
     <form>
 
       <SelectCoins /> 
+      <SelectCriptoCurrency /> 
 
       <InputSubmit 
         type="submit" 

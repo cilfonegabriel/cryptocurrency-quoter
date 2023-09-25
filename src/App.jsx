@@ -49,7 +49,7 @@ function App() {
       />
 
       <div>
-        <Heading>Quote cryptocurrencies instantly</Heading>
+        <Heading>Quote Cryptocurrencies Instantly</Heading>
         <Form />
       </div>
     </Container>
