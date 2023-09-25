@@ -23,7 +23,7 @@ const InputSubmit = styled.input `
     }
 `
 
-const Form = () => {
+const Form = ({setCoins}) => {
 
     const [criptos, setCriptos] = useState([])
     const [error, setError] = useState(false)
@@ -62,12 +62,16 @@ const Form = () => {
             return
         }
         setError(false)
+        setCoins({
+            coin,
+            criptoCurrency
+        })
     }
 
   return (
     <>
         {error && <Error>All fields are required</Error>}
-        
+
         <form
             onSubmit={handleSubmit}
         >
