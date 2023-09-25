@@ -42,11 +42,26 @@ const Heading = styled.h1`
 function App() {
 
   const [coins, setCoins] = useState({})
+  const [result, setResult] = useState({})
 
   useEffect(() => {
     if(Object.keys(coins).length > 0) {
-      console.log(coins)
+
+      const quoteCripto = async () => {
+
+        const  {coin, criptoCurrency } = coins
+
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptoCurrency}&tsyms=${coin}`
+
+        const resp = await fetch(url)
+        const result = await resp.json()
+
+       setResult(result.DISPLAY[criptoCurrency][coin])
+      }
+
+      quoteCripto()
     }
+
   },[coins])
  
   return (
